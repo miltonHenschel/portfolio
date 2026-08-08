@@ -3,6 +3,13 @@ on:
   push:
     branches:
       - master
+
+# Grant the built-in GITHUB_TOKEN the required access for Pages
+permissions:
+  contents: write    # Needed to push files to the gh-pages branch
+  pages: write       # Needed to configure and trigger the Pages deployment
+  id-token: write    # Needed if you are using official GitHub Pages actions
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -20,11 +27,11 @@ jobs:
         env:
           CI: true
       - name: Deploy to production
-        uses: awibox/deploy-to-github-pages-action@master
+        uses: miltonHenschel/deploy-to-github-pages-action@master
         env:
-          AUTHOR: awibox
+          AUTHOR: miltonHenschel
           BUILD_PATH: public
-          GITHUB_PAGE_NAME: awibox.github.io
+          GITHUB_PAGE_NAME: miltonHenschel.github.io
           PA_TOKEN: ${{ secrets.PA_TOKEN }}
-          USERNAME: awibox
-          EMAIL: 1931010+awibox@users.noreply.github.com
+          USERNAME: miltonHenschel
+          EMAIL: 87370519+miltonHenschel@users.noreply.github.com
